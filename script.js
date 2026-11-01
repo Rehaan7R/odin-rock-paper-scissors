@@ -57,7 +57,7 @@ let computerScore = 0;
       // Handle computer win scenarios
       If computerChoice is rock and humanChoice is scissors
         Or If computerChoice is paper and humanChoice is rock
-        Or If humanChoice is scissors and humanChoice is paper
+        Or If computerChoice is scissors and humanChoice is paper
             Increment computerScore
             Print "You Lose! (computerChoice beats (humanChoice)."
         End if
@@ -78,12 +78,9 @@ function playRound(humanChoice, computerChoice) {
             return `You Win! ${humanChoice} beats ${computerChoice}.`;
     }
 
-    if ((computerChoice === "rock" && humanChoice === "scissors") || 
-        (computerChoice === "paper" && humanChoice === "rock") ||
-        (computerChoice === "scissors" && humanChoice === "paper")) {
-            computerScore++;
-            return `You Lose! ${computerChoice} beats ${humanChoice}.`;
-    }
+    // If we get to this point after the earlier 2 ifs, it means that the computer has won.
+    computerScore++;
+    return `You Lose! ${computerChoice} beats ${humanChoice}.`;
 }
 
 /* Play full game
