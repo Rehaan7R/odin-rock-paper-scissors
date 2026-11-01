@@ -29,10 +29,9 @@ function getComputerChoice() {
     function getHumanChoice
       set humanChoice = input from prompt
  */
-let humanChoice;
 
 function getHumanChoice() {
-    return humanChoice = prompt("Choose Rock, Paper or Scissors");   
+    return prompt("Choose Rock, Paper or Scissors");   
 }
 
 let humanScore = 0;
@@ -87,7 +86,26 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+/* Play full game
 
-console.log(playRound(humanSelection, computerSelection));
+   Function playGame
+     Loop 5 times
+        Get humanSelection
+        Get computerSelection
+        Call playRound function and pass in humanSelection and computerSelection and display it
+      End loop
+
+      Display the final scores
+ */
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(humanSelection, computerSelection));
+    }
+
+    console.log(`Final score: You ${humanScore} - ${computerScore} Computer`);
+}
+
+playGame();
