@@ -1,6 +1,8 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const playerDisplay = document.querySelector("#player-choice");
+const computerDisplay = document.querySelector("#computer-choice");
 const results = document.querySelector("#results");
 const scores = document.querySelector("#scores");
 const winner = document.querySelector("#winner");
@@ -20,6 +22,8 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    results.classList.remove("highlight-green", "highlight-red")
+
     if (humanChoice === computerChoice) {
         return "It's a tie!"
     } else if ((humanChoice === "rock" && computerChoice === "scissors") || 
@@ -27,10 +31,12 @@ function playRound(humanChoice, computerChoice) {
             (humanChoice === "scissors" && computerChoice === "paper")) {
         humanScore++;
         scores.textContent = `Player ${humanScore} : ${computerScore} Computer`;
+        results.classList.add("highlight-green");
         return `You Win! ${humanChoice} beats ${computerChoice}.`;
     } else {
         computerScore++;
         scores.textContent = `Player ${humanScore} : ${computerScore} Computer`;
+        results.classList.add("highlight-red");
         return `You Lose! ${computerChoice} beats ${humanChoice}.`;
     }
 }
@@ -38,30 +44,47 @@ function playRound(humanChoice, computerChoice) {
 function checkGameOver() {
     if (humanScore === 5) {
         winner.textContent = "You won! Refresh the page to play again.";
+        winner.classList.add("highlight-green");
         buttons.forEach(button => button.disabled = true);
     } else if (computerScore === 5) {
         winner.textContent = "The computer won! Refresh the page to play again.";
+        winner.classList.add("highlight-red");
         buttons.forEach(button => button.disabled = true);
     } 
 }
 
+function getChoiceEmoji (choice) {
+    switch(choice) {
+        case "rock":
+            return "✊";
+        case "paper": 
+            return "✋";
+        case "scissors":
+            return "✌️";
+    }
+}
+
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-        let playerSelection;
+        let playerChoice;
+        const computerChoice = getComputerChoice();
 
         switch(button.id) {
             case "rock-btn":
-                playerSelection = "rock";
+                playerChoice = "rock";
                 break;
             case "paper-btn":
-                playerSelection = "paper";
+                playerChoice = "paper";
                 break;
             case "scissors-btn":
-                playerSelection = "scissors";
+                playerChoice = "scissors";
                 break;
         }
 
-        results.textContent = playRound(playerSelection, getComputerChoice());
+        playerDisplay.textContent = button.textContent;
+        computerDisplay.textContent = getChoiceEmoji(computerChoice);
+
+        results.textContent = playRound(playerChoice, computerChoice);
         checkGameOver();
     })
 })

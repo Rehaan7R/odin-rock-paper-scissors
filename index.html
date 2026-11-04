@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="header">Rock, Paper, Scissors!</div>
@@ -14,8 +15,19 @@
         <button id="scissors-btn">✌️</button>
     </div>
 
+    <div id="choices">
+        <div class="player">
+            <h1>You chose:</h1>
+            <p id="player-choice"></p>
+        </div>
+        <div class="computer">
+            <h1>The computer chose:</h1>
+            <p id="computer-choice"></p>
+        </div>
+    </div>
+    
     <div id="results"></div>
-    <div id="scores"></div>
+    <div id="scores">Player 0 : 0 Computer</div>
     <div id="winner"></div>
 
     <script src="script.js"></script>
