@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     height: 100vh;
     margin: 0;
@@ -6,34 +10,35 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    padding-bottom: 50px;
 
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     background-color: #F1EFE8;
 }
 
-#header {
-    font-size: 80px;
+.game-title {
+    font-size: 60px;
     font-weight: 800;
     color: rgb(255, 196, 0);
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
-#button-container {
+.move-buttons {
     display: flex;
     gap: 50px;
     margin-bottom: 30px;
 }
 
-#button-container button {
-    padding: 60px 60px;
-    font-size: 90px;
+.move-buttons button {
+    padding: 50px 50px;
+    font-size: 70px;
     background-color: #2C2C2A;
     border-radius: 999px;
     border: none;
 }
 
-#choices {
+.choices {
     display: flex;
     gap: 50px;
     margin-bottom: 20px;
